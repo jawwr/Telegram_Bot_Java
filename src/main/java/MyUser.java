@@ -13,10 +13,7 @@ public class MyUser {
         this.userName = userName;
         this.id = id;
     }
-    public void ChangeGroup(GroupName newGroup){
-        this.selectGroup = newGroup;
-    }
-    public void SetSelectGroup(GroupName groupName){
-        this.selectGroup = groupName;
+    public boolean checkGroup(){
+        return selectGroup == null;
     }
 }

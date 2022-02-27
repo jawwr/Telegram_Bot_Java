@@ -19,13 +19,11 @@ public final class KeyboardButtons {
 
         keyboardRow.add("/lesson");
         keyboardRow.add("/schedule");
-        keyboardRow.add("/week");
         keyboard.add(keyboardRow);
 
         keyboardRow = new KeyboardRow();
-        keyboardRow.add("/new_group");
-        keyboardRow.add("/change_group");
-        keyboardRow.add("/some");
+        keyboardRow.add("/week");
+        keyboardRow.add("/tomorrow");
         keyboard.add(keyboardRow);
         replyKeyboardMarkup.setKeyboard(keyboard);
     }
@@ -45,5 +43,19 @@ public final class KeyboardButtons {
         keyboard.add(keyboardRow);
         replyKeyboardMarkup.setKeyboard(keyboard);
     }
-    //TODO сделать плитку с установкой группы
+    public static void SetSelectGroup(SendMessage sendMessage){
+        ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
+        sendMessage.setReplyMarkup(replyKeyboardMarkup);
+
+        replyKeyboardMarkup.setOneTimeKeyboard(true);
+        replyKeyboardMarkup.setResizeKeyboard(true);
+
+        List<KeyboardRow> rows = new ArrayList<>();
+
+        KeyboardRow row = new KeyboardRow();
+         row.add("/set_group");
+         rows.add(row);
+
+         replyKeyboardMarkup.setKeyboard(rows);
+    }
 }

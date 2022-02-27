@@ -6,7 +6,6 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import java.io.IOException;
 
-//TODO сделать класс для работы с датами и временем
 public class MyTelegramBot extends TelegramLongPollingBot {
 
     private static BotState state;
@@ -25,11 +24,11 @@ public class MyTelegramBot extends TelegramLongPollingBot {
     public void onUpdateReceived(Update update) {
         Message message = update.getMessage();
         if (update.hasMessage()) {
-            Answer(message);
+            answer(message);
         }
     }
 
-    public void Answer(Message message) throws TelegramApiException, IOException { execute(handler.Handler(message)); }
+    public void answer(Message message) throws TelegramApiException, IOException { execute(handler.Handler(message)); }
 
     @Override
     public String getBotUsername() {

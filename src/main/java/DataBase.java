@@ -24,25 +24,34 @@ public final class DataBase {
         ObjectMapper mapper = new ObjectMapper();
         userList = new ArrayList<>(Arrays.asList(mapper.readValue(Paths.get("src/files/DataBase.json").toFile(), MyUser[].class)));
     }
-    public static List<MyUser> GetBD(){
+    public static List<MyUser> getBD(){
         return userList;
     }
-    public static void AddUser(@NotNull User fromUser) throws IOException {
-        MyUser newUser = new MyUser(fromUser.getUserName(),fromUser.getId());
+    public static void addUser(@NotNull User fromUser) throws IOException {
+        MyUser newUser = new MyUser(fromUser.getFirstName(),fromUser.getId());
         if(userList.stream().filter(x -> x.id == fromUser.getId()).count() == 0)
             userList.add(newUser);
-        WriteInFile();
+        writeInFile();
     }
-    public static void ChangeUserGroup(User fromUser, GroupName newGroup) throws IOException {
+    public static void changeUserGroup(User fromUser, GroupName newGroup) throws IOException {
         for (var user:userList){
             if(user.id == fromUser.getId()){
                 user.selectGroup = newGroup;
                 break;
             }
         }
-        WriteInFile();
+        writeInFile();
     }
-    private static void WriteInFile() throws IOException {
+    public static GroupName getUserGroup(User user){
+        return userList.stream().filter(x -> x.id == user.getId()).findFirst().get().selectGroup;
+    }
+    public static boolean checkUserGroup(User user){
+        return userList.stream().filter(x -> x.id == user.getId()).findFirst().get().checkGroup();
+    }
+    public static boolean checkUser(User user){
+        return userList.stream().filter(x -> x.id == user.getId()).count() == 0;
+    }
+    private static void writeInFile() throws IOException {
         ObjectWriter writer = new ObjectMapper().writer(new DefaultPrettyPrinter());
         writer.writeValue(Paths.get("src/files/DataBase.json").toFile(),userList);
     }
