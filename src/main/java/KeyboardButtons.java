@@ -3,6 +3,7 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMar
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public final class KeyboardButtons {
@@ -38,8 +39,8 @@ public final class KeyboardButtons {
 
         KeyboardRow keyboardRow = new KeyboardRow();
 
-        keyboardRow.add("@ПрИ-101");
-        keyboardRow.add("@ПрИ-102");
+        for (var group : GroupName.values())
+            keyboardRow.add("@" + group.name());
         keyboard.add(keyboardRow);
         replyKeyboardMarkup.setKeyboard(keyboard);
     }

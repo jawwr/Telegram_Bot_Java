@@ -22,7 +22,7 @@ public class GetLessonNow implements ICommand{
         if (!DateTimeWork.timeCompare(day.lessons[day.lessons.length - 1].time_end))
             return "<b>Пары кончились</b>";
         if(DateTimeWork.timeCompare(day.lessons[0].time_start))
-            return "<b>Пары еще не начались</b>\n<b>Первая пара: </b>" + day.lessons[0].name + "<b>Начало: </b>" + day.lessons[0].time_start + "\n<b>Аудитория: </b>" + day.lessons[0].auditorium;
+            return "<b>Пары еще не начались</b>\n<b>Первая пара: </b>" + day.lessons[0].name + "\n<b>Начало: </b>" + day.lessons[0].time_start + "\n<b>Аудитория: </b>" + day.lessons[0].auditorium;
         for(var les:day.lessons){
             if(!DateTimeWork.timeCompare(les.time_start) && DateTimeWork.timeCompare(les.time_end))
                 return "<b>Сейчас идет пара: </b>" + les.name + "\n<b>Аудитория: </b>" + les.auditorium + "<b>\nПреподаватель: </b>" + les.teacher + "\n<b>Начало: </b>" + les.time_start + "\n<b>Конец: </b>" + les.time_end;

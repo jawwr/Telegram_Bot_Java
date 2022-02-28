@@ -1,4 +1,4 @@
 public enum GroupName {
-    PrE_101,
-    PrE_102
+    ПрИ_101,
+    ПрИ_102
 }

@@ -22,7 +22,7 @@ public final class DateTimeWork {
         ZoneId timezone = ZoneId.of("Asia/Yekaterinburg");
         ZonedDateTime localDate = ZonedDateTime.now(timezone);
         String[] times = time.split(":");
-        return (Integer.parseInt(times[0]) >= localDate.getHour() || Integer.parseInt(times[1]) >= localDate.getMinute());
+        return (Integer.parseInt(times[0]) >= localDate.getHour() & Integer.parseInt(times[1]) >= localDate.getMinute());
     }
     public static int checkWeekNumber(){
         ZoneId timezone = ZoneId.of("Asia/Yekaterinburg");
