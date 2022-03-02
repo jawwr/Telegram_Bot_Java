@@ -16,19 +16,17 @@ public class GetWeekShedule implements ICommand{
     private @NotNull String setText(Message message) throws IOException {
         LessonsContainer lessonsContainer = new LessonsContainer(DataBase.getUserGroup(message.getFrom()));
         var week = DateTimeWork.checkWeekNumber() == 1 ? lessonsContainer.first_week : lessonsContainer.second_week;
-        String str ="<b>" + week.name + "</b>\n\n";
+        StringBuilder str = new StringBuilder("<b>" + week.name + "</b>\n\n");
         for(var day:week.day){
-            str += "———————————";
-            str += "\n<b>[ " + day.name + " ]</b>\n";
+            str.append("———————————");
+            str.append("\n<b>[ ").append(day.name).append(" ]</b>\n");
             int i = 1;
             for(var les : day.lessons) {
-                str += ("\n<b>" + i + ")" + " Пара: </b>" + les.name +
-                            "\n<b>Начало: </b>" + les.time_start +
-                            "\n<b>Конец: </b>" + les.time_end);
-                str += "\n";
+                str.append("\n<b>").append(i).append(")").append(" Пара: </b>").append(les.name).append("\n<b>Начало: </b>").append(les.time_start).append("\n<b>Конец: </b>").append(les.time_end);
+                str.append("\n");
                 i++;
             }
         }
-        return str;
+        return str.toString();
     }
 }

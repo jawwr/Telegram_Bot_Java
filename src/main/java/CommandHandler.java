@@ -6,7 +6,6 @@ import org.telegram.telegrambots.meta.api.objects.commands.BotCommand;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Random;
 
 public final class CommandHandler extends BotCommand {
@@ -33,11 +32,11 @@ public final class CommandHandler extends BotCommand {
         MyTelegramBot.SetBotState(BotState.None);
         ICommand commandAnswer = switch (command.getText()) {
             case "/start" -> new StartMessage();
-            case "/lesson" -> new GetLessonNow();
+            case "/пара" -> new GetLessonNow();
             case "/set_group" -> new NewGroup();
-            case "/schedule" -> new GetSheduleToday();
-            case "/tomorrow" -> new GetSheduleTomorrow();
-            case "/week" -> new GetWeekShedule();
+            case "/расписание" -> new GetSheduleToday();
+            case "/завтра" -> new GetSheduleTomorrow();
+            case "/неделя" -> new GetWeekShedule();
             default -> new AnotherAnswer();
         };
         return commandAnswer.answer(command);

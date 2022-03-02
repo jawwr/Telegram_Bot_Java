@@ -1,9 +1,11 @@
 [ {
-  "userName" : "jawwr",
-  "selectGroup" : "ПрИ_101",
-  "id" : 312154727
-}, {
+  "userFirstName" : "Dangje",
   "userName" : null,
-  "selectGroup" : "ПрИ_102",
+  "selectGroup" : null,
   "id" : 1818567932
+}, {
+  "userFirstName" : "Arseny",
+  "userName" : "jawwr",
+  "selectGroup" : "ПрИ_102",
+  "id" : 312154727
 } ]

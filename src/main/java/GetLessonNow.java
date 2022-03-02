@@ -14,7 +14,7 @@ public class GetLessonNow implements ICommand{
         sendMessage.enableHtml(true);
         return sendMessage;
     }
-    private @NotNull String setText(Message message) throws IOException {
+    private String setText(Message message) throws IOException {
         LessonsContainer lessonsContainer = new LessonsContainer(DataBase.getUserGroup(message.getFrom()));
         if (DateTimeWork.getDayOfWeek() == 6)
             return "<b>Сегодня нет пар</b>";

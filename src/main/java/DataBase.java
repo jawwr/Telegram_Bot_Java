@@ -28,7 +28,7 @@ public final class DataBase {
         return userList;
     }
     public static void addUser(@NotNull User fromUser) throws IOException {
-        MyUser newUser = new MyUser(fromUser.getFirstName(),fromUser.getId());
+        MyUser newUser = new MyUser(fromUser.getFirstName(), fromUser.getUserName(), fromUser.getId());
         if(userList.stream().filter(x -> x.id == fromUser.getId()).count() == 0)
             userList.add(newUser);
         writeInFile();
@@ -43,7 +43,7 @@ public final class DataBase {
         writeInFile();
     }
     public static GroupName getUserGroup(User user){
-        return userList.stream().filter(x -> x.id == user.getId()).findFirst().get().selectGroup;
+        return userList.stream().filter(x -> x.id == user.getId()).findFirst().get().getSelectGroup();
     }
     public static boolean checkUserGroup(User user){
         return userList.stream().filter(x -> x.id == user.getId()).findFirst().get().checkGroup();

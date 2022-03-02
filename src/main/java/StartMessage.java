@@ -28,7 +28,9 @@ public class StartMessage implements ICommand {
 
         return sendMessage;
     }
-    public static SendMessage setGroupMessage(Message message){
+    public static SendMessage setGroupMessage(Message message) throws IOException {
+        DataBase.addUser(message.getFrom());
+
         SendMessage sendMessage = new SendMessage();
         sendMessage.setChatId(message.getChatId().toString());
         sendMessage.setText("Для взаимодействия с ботом необходимо установить группу!");

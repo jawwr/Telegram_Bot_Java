@@ -17,26 +17,21 @@ public class GetSheduleTomorrow implements ICommand{
         LessonsContainer lessonsContainer = new LessonsContainer(DataBase.getUserGroup(message.getFrom()));
         int dayTomorrow = DateTimeWork.getDayOfWeek() + 1;
         Day day;
-        if (dayTomorrow == 7) {
+        if (dayTomorrow == 7 || dayTomorrow == 6) {
             dayTomorrow = 0;
             day = DateTimeWork.checkWeekNumber() != 1 ? lessonsContainer.first_week.day[dayTomorrow] : lessonsContainer.second_week.day[dayTomorrow];
-        }
-        else if(dayTomorrow == 6) {
-            return "<b>Завтра пар нет</b>";
         }
         else {
             day = DateTimeWork.checkWeekNumber() == 1 ? lessonsContainer.first_week.day[dayTomorrow] : lessonsContainer.second_week.day[dayTomorrow];
         }
-        String str ="<b>[ " + day.name + " ]</b>\n\n";
+        StringBuilder str = new StringBuilder();
+        str.append("<b>[ " + day.name + " ]</b>\n\n");
         int i = 1;
         for(var les:day.lessons){
-            str += ("<b>" + i + ")" + " Пара: </b>" + les.name +
-                    "\n<b>Аудитория: </b>" + les.auditorium +
-                    "\n<b>Начало: </b>" + les.time_start +
-                    "\n<b>Конец: </b>" + les.time_end);
-            str += "\n\n";
+            str.append("<b>").append(i).append(")").append(" Пара: </b>").append(les.name).append("\n<b>Аудитория: </b>").append(les.auditorium).append("\n<b>Начало: </b>").append(les.time_start).append("\n<b>Конец: </b>").append(les.time_end);
+            str.append("\n\n");
             i++;
         }
-        return str;
+        return str.toString();
     }
 }

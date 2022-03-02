@@ -20,27 +20,20 @@ public class GetSheduleToday implements ICommand{
         var day = DateTimeWork.checkWeekNumber() == 1
                 ? lessonsContainer.first_week.day[DateTimeWork.getDayOfWeek()]
                 : lessonsContainer.second_week.day[DateTimeWork.getDayOfWeek()];
-        String str = "<b>[ " + day.name + " ]</b>\n\n";
+        StringBuilder str = new StringBuilder();
+         str.append("<b>[ " + day.name + " ]</b>\n\n");
         for(var les:day.lessons){
             int i = 1;
             if(!DateTimeWork.timeCompare(les.time_start) && DateTimeWork.timeCompare(les.time_end)){
-                str += "<b>";
-                str += ("" + i + ")" + " Пара: " + les.name +
-                        "\nАудитория: " + les.auditorium +
-                        "\nПреподаватель: " + les.teacher +
-                        "\nНачало: " + les.time_start +
-                        "\nКонец: " + les.time_end);
-                str += "\n\n";
+                str.append("<b>");
+                str.append(i).append(")").append(" Пара: ").append(les.name).append("\nАудитория: ").append(les.auditorium).append("\nПреподаватель: ").append(les.teacher).append("\nНачало: ").append(les.time_start).append("\nКонец: ").append(les.time_end);
+                str.append("\n\n");
                 i++;
-                str += "</b>";
+                str.append("</b>");
             }
             else {
-                str += ("<b>" + i + ")" + " Пара: </b>" + les.name +
-                        "\n<b>Аудитория: </b>" + les.auditorium +
-                        "\n<b>Преподаватель: </b>" + les.teacher +
-                        "\n<b>Начало: </b>" + les.time_start +
-                        "\n<b>Конец: </b>" + les.time_end);
-                str += "\n\n";
+                str.append("<b>").append(i).append(")").append(" Пара: </b>").append(les.name).append("\n<b>Аудитория: </b>").append(les.auditorium).append("\n<b>Преподаватель: </b>").append(les.teacher).append("\n<b>Начало: </b>").append(les.time_start).append("\n<b>Конец: </b>").append(les.time_end);
+                str.append("\n\n");
                 i++;
             }
         }

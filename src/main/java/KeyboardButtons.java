@@ -18,13 +18,13 @@ public final class KeyboardButtons {
 
         KeyboardRow keyboardRow = new KeyboardRow();
 
-        keyboardRow.add("/lesson");
-        keyboardRow.add("/schedule");
+        keyboardRow.add("/пара");
+        keyboardRow.add("/расписание");
         keyboard.add(keyboardRow);
 
         keyboardRow = new KeyboardRow();
-        keyboardRow.add("/week");
-        keyboardRow.add("/tomorrow");
+        keyboardRow.add("/неделя");
+        keyboardRow.add("/завтра");
         keyboard.add(keyboardRow);
         replyKeyboardMarkup.setKeyboard(keyboard);
     }
