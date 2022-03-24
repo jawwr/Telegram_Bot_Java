@@ -13,7 +13,7 @@ public class SetGroup {
     private static final DataBase dataBase = new DataBase();
 
     public static SendMessage setNewGroup(Message newGroup) throws IOException {
-         var group = newGroup.getText().split("@");
+         String[] group = newGroup.getText().split("@");
          if (group[1].equals("ПрИ_101")){
              dataBase.changeUserGroup(newGroup.getFrom(), GroupName.ПрИ_101);
              SendMessage sendMessage = SendMessage.builder().chatId(newGroup.getChatId().toString()).text("Готово").build();

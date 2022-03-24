@@ -1,5 +1,6 @@
 package bot.command;
 
+import bot.models.Lesson;
 import bot.other_logic.DateTimeWork;
 import bot.dao.DataBase;
 import bot.models.Day;
@@ -39,7 +40,7 @@ public class GetSheduleTomorrow implements ICommand {
         StringBuilder str = new StringBuilder();
         str.append("<b>[ " + day.name + " ]</b>\n\n");
         int i = 1;
-        for(var les:day.lessons){
+        for(Lesson les:day.lessons){
             str.append("<b>").append(i).append(")").append(" Пара: </b>").append(les.name).append("\n<b>Аудитория: </b>").append(les.auditorium).append("\n<b>Начало: </b>").append(les.time_start).append("\n<b>Конец: </b>").append(les.time_end);
             str.append("\n\n");
             i++;

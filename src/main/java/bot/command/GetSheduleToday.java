@@ -1,5 +1,7 @@
 package bot.command;
 
+import bot.models.Day;
+import bot.models.Lesson;
 import bot.other_logic.DateTimeWork;
 import bot.dao.DataBase;
 import bot.models.LessonsContainer;
@@ -28,12 +30,12 @@ public class GetSheduleToday implements ICommand {
         LessonsContainer lessonsContainer = new LessonsContainer(dataBase.getUserGroup(message.getFrom()));
         if (DateTimeWork.getDayOfWeek() == 6)
             return "<b>Сегодня нет пар</b>";
-        var day = DateTimeWork.checkWeekNumber() == 1
+        Day day = DateTimeWork.checkWeekNumber() == 1
                 ? lessonsContainer.first_week.day[DateTimeWork.getDayOfWeek()]
                 : lessonsContainer.second_week.day[DateTimeWork.getDayOfWeek()];
         StringBuilder str = new StringBuilder();
          str.append("<b>[ " + day.name + " ]</b>\n\n");
-        for(var les:day.lessons){
+        for(Lesson les:day.lessons){
             int i = 1;
             if(!DateTimeWork.timeCompare(les.time_start) && DateTimeWork.timeCompare(les.time_end)){
                 str.append("<b>");

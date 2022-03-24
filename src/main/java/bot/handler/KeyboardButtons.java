@@ -41,7 +41,7 @@ public final class KeyboardButtons {
 
         KeyboardRow keyboardRow = new KeyboardRow();
 
-        for (var group : GroupName.values())
+        for (GroupName group : GroupName.values())
             keyboardRow.add("@" + group.name());
         keyboard.add(keyboardRow);
         replyKeyboardMarkup.setKeyboard(keyboard);

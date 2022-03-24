@@ -13,6 +13,7 @@ import org.telegram.telegrambots.meta.api.objects.commands.BotCommand;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 public final class CommandHandler extends BotCommand {
@@ -43,14 +44,22 @@ public final class CommandHandler extends BotCommand {
         if(dataBase.checkUser(command.getFrom()) || dataBase.checkUserGroup(command.getFrom()))
             return commandHandlerWithoutGroup(command);
         MyTelegramBot.SetBotState(BotState.None);
-        ICommand commandAnswer = switch (command.getText()) {
-            case "/start" -> new StartMessage();
-            case "/пара" -> new GetLessonNow();
-            case "/set_group" -> new NewGroup();
-            case "/расписание" -> new GetSheduleToday();
-            case "/завтра" -> new GetSheduleTomorrow();
-            case "/неделя" -> new GetWeekShedule();
-            default -> new AnotherAnswer();
+        ICommand commandAnswer = null;
+        switch (command.getText()) {
+            case "/start" : new StartMessage();
+            break;
+            case "/пара" : new GetLessonNow();
+            break;
+            case "/set_group" : new NewGroup();
+            break;
+            case "/расписание" : new GetSheduleToday();
+            break;
+            case "/завтра" : new GetSheduleTomorrow();
+            break;
+            case "/неделя" : new GetWeekShedule();
+            break;
+            default : new AnotherAnswer();
+            break;
         };
         return commandAnswer.answer(command);
     }
@@ -74,7 +83,7 @@ public final class CommandHandler extends BotCommand {
     }
     private String setSomeMessage(Message message) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
-        var phrases = Arrays.asList(mapper.readValue(Paths.get("src/files/phrase.json").toFile(),String[].class)) ;
+        List<String> phrases = Arrays.asList(mapper.readValue(Paths.get("src/files/phrase.json").toFile(),String[].class)) ;
         Random random = new Random();
         return phrases.get(random.nextInt(phrases.size()));
     }
