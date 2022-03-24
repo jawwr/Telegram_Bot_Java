@@ -1,6 +1,7 @@
 package bot.telegram_bot;
 
 import bot.handler.CommandHandler;
+import bot.util.PropertiesUtil;
 import lombok.SneakyThrows;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.objects.Message;
@@ -44,6 +45,6 @@ public class MyTelegramBot extends TelegramLongPollingBot {
 
     @Override
     public String getBotToken() {
-        return "5227099244:AAHg00rqLVaAMCG-_jxAMHupK0vwvqiMpWk";
+        return PropertiesUtil.get("bot.token");
     }
 }

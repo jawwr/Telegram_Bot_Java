@@ -8,5 +8,12 @@
       <jdbc-url>jdbc:postgresql://localhost:5432/telegram_bot_db</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="heroku" uuid="b0bf9841-e21e-4df4-8cee-fa5a7e8d7ae6">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://ec2-3-225-213-67.compute-1.amazonaws.com:5432/de0ibbc9siii1e</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>

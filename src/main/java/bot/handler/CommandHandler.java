@@ -44,22 +44,29 @@ public final class CommandHandler extends BotCommand {
         if(dataBase.checkUser(command.getFrom()) || dataBase.checkUserGroup(command.getFrom()))
             return commandHandlerWithoutGroup(command);
         MyTelegramBot.SetBotState(BotState.None);
-        ICommand commandAnswer = null;
+        ICommand commandAnswer;
         switch (command.getText()) {
-            case "/start" : new StartMessage();
-            break;
-            case "/пара" : new GetLessonNow();
-            break;
-            case "/set_group" : new NewGroup();
-            break;
-            case "/расписание" : new GetSheduleToday();
-            break;
-            case "/завтра" : new GetSheduleTomorrow();
-            break;
-            case "/неделя" : new GetWeekShedule();
-            break;
-            default : new AnotherAnswer();
-            break;
+            case "/start" :
+                commandAnswer = new StartMessage();
+                break;
+            case "/пара" :
+                commandAnswer = new GetLessonNow();
+                break;
+            case "/set_group" :
+                commandAnswer = new NewGroup();
+                break;
+            case "/расписание" :
+                commandAnswer = new GetSheduleToday();
+                break;
+            case "/завтра" :
+                commandAnswer = new GetSheduleTomorrow();
+                break;
+            case "/неделя" :
+                commandAnswer = new GetWeekShedule();
+                break;
+            default :
+                commandAnswer = new AnotherAnswer();
+                break;
         };
         return commandAnswer.answer(command);
     }
