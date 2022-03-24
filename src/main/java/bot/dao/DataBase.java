@@ -1,6 +1,7 @@
 package bot.dao;
 
 import bot.GroupName;
+import bot.util.PropertiesUtil;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.objects.User;
 
@@ -9,15 +10,19 @@ import java.sql.*;
 
 @Component
 public class DataBase {
-    private static final String url = "jdbc:postgresql://localhost:5432/telegram_bot_db";
-    private static final String name = "postgres";
-    private static final String password = "Senya2003";
+    private static final String url_key = "db.url";
+    private static final String name_key = "db.user";
+    private static final String password_key = "db.password";
 
     private static Connection connection;
 
     static {
         try{
-            connection = DriverManager.getConnection(url,name,password);
+            connection = DriverManager.getConnection(
+                    PropertiesUtil.get(url_key),
+                    PropertiesUtil.get(name_key),
+                    PropertiesUtil.get(password_key)
+            );
         }catch (Exception e){
             System.out.println(e.getMessage());
         }
